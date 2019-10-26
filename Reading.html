@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<title>Story Writer</title>
+<script>
+// ps this is how to comment in JS
+// You apparently dont have to do anythin special to add javascrip to an html file other than the <script> tag. 
+function loadStory(){
+// code example in the book had double quotes around the values in the getElementById's and that was breaking it.
+var storyName = document.getElementById('name_input').value
+var storyHTML = localStorage.getItem(storyName)
+document.getElementById('story_editor').value = storyHTML
+ }
+
+ function saveStory(){
+ var storyName = document.getElementById('name_input').value
+ var storyHTML = document.getElementById('story_editor').value
+ // I was not able to figure out how to do console.log on VS Code
+//  console.log("storyName")
+//  console.log(storyHTML)
+//  document.getElementById('story_display').innerHTML = storyHTML
+ localStorage.setItem(storyName, storyHTML)
+ }
+
+ // The book also had displayStory spelled dsiplayStory() which was breaking that part of the program. 
+ function displayStory(){
+ var storyHTML = document.getElementById('story_editor').value
+ document.getElementById('story_display').innerHTML = storyHTML
+ }
+
+// Rememver that indenting is very important for understanding how the code works 
+ function checkNumber(){
+ var numberAsText = document.getElementById("number_input").value
+ var aNumber = parseInt(numberAsText)
+    if(numberAsText != "" && !isNaN(aNumber)){
+        var remainder = numberAsText % 2
+        if(aNumber != 0 && remainder == 0){
+            document.getElementById("result_display").innerHTML =
+            aNumber + " is even."
+        }
+        else if(aNumber != 0 && remainder == 1){
+            document.getElementById("result_display").innerHTML =
+            aNumber + " is odd."
+        }
+        else{
+            document.getElementById("result_display").innerHTML =
+            "0 is neither even nor odd."
+            }
+        }
+    else{
+        document.getElementById("result_display").innerHTML =
+        'Please enter a number.'
+    }
+}
+ 
+ </script>
+
+ <style>
+ textarea{
+ width:800px;
+ height: 250px;
+ background-color: lightyellow;
+ }
+ /* PS this is how to comment in css */
+ body{
+ background-color: LightGrey;
+ }
+
+ input{
+ border: none;
+ border-radius: 5px;
+ box-shadow: 0px 0px 5px #666666 inset;
+ height: 25px;
+ width: 200px;
+ }
+ </style>
+ 
+ </head>
+
+ <body>
+ <h1>Story Editor</h1>
+ Story Name:<input id=name_input></input>
+ <section>
+ <button onclick="loadStory()">Find and Edit It</button>
+ <button onclick="saveStory()">Save It</button>
+ <button onclick="displayStory()">Display It</button>
+ </section>
+ <textarea id="story_editor" placeholder="Write a totally awesome story here."></textarea>
+ <!--This is how to comment in htmnl-->
+ <!-- you can't add a place holder to a 'section' -->
+ <section id="story_display"></section>
+
+ <h1>Even or Odd???</h1>
+ <!-- was name_input not number input in the book  -->
+Enter a Number: <input id= number_input></input>
+<button onclick="checkNumber()">Check It!</button>
+<section id="result_display"></section>
+ </body>
+ </html>
