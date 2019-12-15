@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      
+        /* This is just to make the example nicer */
+body {
+  font: 1em sans-serif;
+  padding: 0;
+  margin : 0;
+}
+
+form {
+  max-width: 200px;
+}
+
+p * {
+  display: block;
+}
+
+input[type=email]{
+  -webkit-appearance: none;
+
+  width: 100%;
+  border: 1px solid #333;
+  margin: 0;
+
+  font-family: inherit;
+  font-size: 90%;
+
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* This is our style for the invalid fields */
+input:invalid{
+  border-color: #900;
+  background-color: #FDD;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+/* This is the style of our error messages */
+.error {
+  width  : 100%;
+  padding: 0;
+ 
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+ 
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.error.active {
+  padding: 0.3em;
+}
+    </style>
+</head>
+<body>
+        <form>
+                <div>
+                  <label for="choose">Would you prefer a banana or a cherry?</label>
+                  <input type="text" id="choose" name="i_like" required minlength="6" maxlength="6">
+                </div>
+                <div>
+                  <label for="number">How many would you like?</label>
+                  <input type="number" id="number" name="amount" value="1" min="1" max="10">
+                </div>
+                <div>
+                  <button>Submit</button>
+                </div>
+              </form>
+
+            <form novalidate>
+                    <p>
+                      <label for="mail">
+                        <span>Please enter an email address:</span>
+                        <input type="email" id="mail" name="mail">
+                        <span class="error" aria-live="polite"></span>
+                      </label>
+                    </p>
+                    <button>Submit</button>
+                  </form>
+
+
+                  <form>
+                        <p>
+                          <fieldset>
+                            <legend>Do you have a driver's license?<abbr title="This field is mandatory" aria-label="required">*</abbr></legend>
+                            <input type="radio" required name="driver" id="r1" value="yes"><label for="r1">Yes</label>
+                            <input type="radio" required name="driver" id="r2" value="no"><label for="r2">No</label>
+                          </fieldset>
+                        </p>
+                        <p>
+                          <label for="n1">How old are you?</label>
+                          <!-- The pattern attribute can act as a fallback for browsers which
+                               don't implement the number input type but support the pattern attribute.
+                               Please note that browsers that support the pattern attribute will make it
+                               fail silently when used with a number field.
+                               Its usage here acts only as a fallback -->
+                          <input type="number" min="12" max="120" step="1" id="n1" name="age"
+                                 pattern="\d+">
+                        </p>
+                        <p>
+                          <label for="t1">What's your favorite fruit?<abbr title="This field is mandatory" aria-label="required">*</abbr></label>
+                          <input type="text" id="t1" name="fruit" list="l1" required
+                                 pattern="[Bb]anana|[Cc]herry|[Aa]pple|[Ss]trawberry|[Ll]emon|[Oo]range">
+                          <datalist id="l1">
+                            <option>Banana</option>
+                            <option>Cherry</option>
+                            <option>Apple</option>
+                            <option>Strawberry</option>
+                            <option>Lemon</option>
+                            <option>Orange</option>
+                          </datalist>
+                        </p>
+                        <p>
+                          <label for="t2">What's your e-mail address?</label>
+                          <input type="email" id="t2" name="email">
+                        </p>
+                        <p>
+                          <label for="t3">Leave a short message</label>
+                          <textarea id="t3" name="msg" maxlength="140" rows="5"></textarea>
+                        </p>
+                        <p>
+                          <button>Submit</button>
+                        </p>
+                      </form>
+    
+</body>
+
+<script>
+// There are many ways to pick a DOM node; here we get the form itself and the email
+// input box, as well as the span element into which we will place the error message.
+
+var form  = document.getElementsByTagName('form')[0];
+var email = document.getElementById('mail');
+var error = document.querySelector('.error');
+
+email.addEventListener("input", function (event) {
+  // Each time the user types something, we check if the
+  // email field is valid.
+  if (email.validity.valid) {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    error.innerHTML = ""; // Reset the content of the message
+    error.className = "error"; // Reset the visual state of the message
+  }
+}, false);
+form.addEventListener("submit", function (event) {
+  // Each time the user tries to send the data, we check
+  // if the email field is valid.
+  if (!email.validity.valid) {
+    
+    // If the field is not valid, we display a custom
+    // error message.
+    error.innerHTML = "I expect an e-mail, darling!";
+    error.className = "error active";
+    // And we prevent the form from being sent by canceling the event
+    event.preventDefault();
+  }
+}, false);
+</script>
+
+<script src="readingcpt2.js"></script>
+</html>
