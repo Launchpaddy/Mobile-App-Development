@@ -1,0 +1,34 @@
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    /* background-image: url('https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/ibmig/cms/image/wcvb/8990766-8990766.jpg?crop=1xw:1.00000000000000000xh;center,top&resize=900:*') */
+}
+
+p {
+    font-size: large;
+}
+
+.button {
+    background-color: rgb(134, 43, 63); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; 
+  width: 100%
+}
+
+div {
+    background-image: "https://en.s4c.news/wp-content/uploads/2019/04/chucknorris3-1-750x375.jpg";
+}
+
+#box {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        display: none;
+        position: relative; 
+}
