@@ -10,4 +10,5 @@ This app is optimized for use on a phone clicks and weights can be added and tak
   
 ![image](https://user-images.githubusercontent.com/43457107/99699886-bdcc5500-2a4f-11eb-9f8c-a974422c5a7b.png)  
   
-This game starts easy and continues to get harder and harder as the squares that are generated in a new location and move and a faster and faster speed making it harder to click on. 
+This game starts easy and continues to get harder and harder as the squares that are generated in a new location and move and a faster and faster speed making it harder to click on.  
+Some if my favorite things about this program was connecting to an API and learning how to do timers in javascript.
